@@ -21,8 +21,8 @@ TagManager:
   - building
   - enemy
   - ground
-  - 
-  - 
+  - friendlyBullets
+  - enemyBullets
   - 
   - 
   - 

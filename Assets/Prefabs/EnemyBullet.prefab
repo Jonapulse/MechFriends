@@ -22,7 +22,8 @@ GameObject:
   - 212: {fileID: 212000010486886998}
   - 114: {fileID: 114000011060867284}
   - 60: {fileID: 60000013663813244}
-  m_Layer: 0
+  - 50: {fileID: 50000014171794446}
+  m_Layer: 17
   m_Name: EnemyBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,6 +43,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &50000014171794446
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012416509160}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!60 &60000013663813244
 PolygonCollider2D:
   m_ObjectHideFlags: 1

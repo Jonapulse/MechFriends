@@ -18,6 +18,8 @@ public class Manager : MonoBehaviour {
     public GameObject titleScreen;
     public GameObject gameOverScreen;
     public GameObject victoryScreen;
+    public GameObject mech;
+    private MechTautLooseControl mechControl;
     
     public GameObject playerHolderPreStart;
 
@@ -39,6 +41,8 @@ public class Manager : MonoBehaviour {
         titleScreen.SetActive(true);
         gameOverScreen.SetActive(false);
         victoryScreen.SetActive(false);
+        mechControl = mech.GetComponent<MechTautLooseControl>();
+        for (int i = 0; i < 4; i++) mechControl.playerPortraits[i].SetActive(false);
     }
 
     void Update () {
@@ -71,6 +75,8 @@ public class Manager : MonoBehaviour {
         playerHolderPreStart.SetActive(false);
 
         numPlayers = players;
+
+        for (int i = 0; i < players; i++) mechControl.playerPortraits[i].SetActive(true);
     }
 
     public void Restart()

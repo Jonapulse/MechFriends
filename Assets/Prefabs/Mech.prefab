@@ -341,7 +341,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010429358602}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.21, y: 0.24999963, z: 0}
+  m_LocalPosition: {x: 0.11, y: 0.24999963, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -424,7 +424,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013076015238}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.408, y: -0.521, z: 0}
+  m_LocalPosition: {x: -0.26, y: -0.521, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -540,7 +540,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013954178382}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.052, y: 0.25, z: 0}
+  m_LocalPosition: {x: 0.09, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -580,7 +580,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013996696618}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.86, y: -0.52100027, z: 0}
+  m_LocalPosition: {x: -0.24, y: -0.52100027, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -1046,13 +1046,28 @@ MonoBehaviour:
   - {fileID: 1000014220706206}
   - {fileID: 1000013038268716}
   ORIENT_SPEED: 150
-  CONTRACT_SPEED: 80
-  RELEASE_SPEED: 300
+  CONTRACT_SPEED: 100
+  RELEASE_SPEED: 450
+  RELEASE_TIME: 0.2
   SHOOT_COOLDOWN: 0.25
   SHOOT_FORCE: 200
   BOOST_COOLDOWN: 3
   BOOST_DURATION: 1.5
   BOOST_FORCE: 60
+  TOGGLE_COOLDOWN_TIME: 0.5
+  portraitHolders:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerPortraits:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  bulletPrefab: {fileID: 1000013326940604, guid: 55d376af773977042b1fc9740242eeb2,
+    type: 2}
+  bulletSpeed: 12.5
 --- !u!212 &212000010025948402
 SpriteRenderer:
   m_ObjectHideFlags: 1
