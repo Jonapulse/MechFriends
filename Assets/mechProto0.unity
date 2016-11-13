@@ -4088,7 +4088,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: '<color=red>G</color>I<color=blue>A</color><color=red>N</color>T <color=blue>U</color><color=red>N</color>D<color=blue>E</color><color=blue>R</color><color=red>S</color>T<color=blue>A</color><color=red>F</color>F<color=blue>E</color><color=red>D</color>
+  m_text: '<color=red>G</color>I<color=blue>A</color><color=red>N</color>T\n <color=blue>U</color><color=red>N</color>D<color=blue>E</color><color=blue></color><color=red>R</color>S<color=blue>T</color><color=red>A</color>F<color=blue>F</color><color=red>E</color>D
 
     <size=133%>MECH WARRIOR'
   m_fontAsset: {fileID: 11400000, guid: c5f5caf2f0c04b14383364a10c770231, type: 2}

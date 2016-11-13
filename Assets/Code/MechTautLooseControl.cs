@@ -80,27 +80,48 @@ public class MechTautLooseControl : MonoBehaviour {
         {
             Vector2 playerOrientation = new Vector2(Input.GetAxisRaw("Horizontal_P" + (i + 1)), Input.GetAxisRaw("Vertical_P" + (i + 1)));
 
-            if( Vector2.Angle(new Vector2(botVecRefs[i].gameObject.transform.position.x, botVecRefs[i].gameObject.transform.position.y)
-                - new Vector2(topVecRefs[i].gameObject.transform.position.x, topVecRefs[i].gameObject.transform.position.y), playerOrientation) > 0)
+           // Debug.Log("PlayerOrientation is " + playerOrientation);
+
+            float topMotorSpeed = 0;
+            float botMotorSpeed = 0;
+
+
+            if(playerOrientation.magnitude != 0)
             {
-                //Add angles
+
+                if (Vector3.Cross(new Vector3(botVecRefs[i].gameObject.transform.position.x, botVecRefs[i].gameObject.transform.position.y, 0)
+                - new Vector3(topVecRefs[i].gameObject.transform.position.x, topVecRefs[i].gameObject.transform.position.y, 0),
+                new Vector3(playerOrientation.x, playerOrientation.y, 0)).z > 0)
+                {
+                    topMotorSpeed = ORIENT_SPEED;
+                }
+                else
+                {
+                    topMotorSpeed = -ORIENT_SPEED;
+                }
             }
-            else
-            {
-                //subtract angles
-            }
+            
+
+
             //Add empty reference vectors to the limbs.  Use the angle compare to how you're pointing
             //to direct in which direction we turn      
 
             //Choose a top motorspeed to get us to this angle (you'll add it to the below one)
 
             //if pressed release... started a release and not finished 
-                //set bool to doing this and not compressing even if you press compress
-                //go rapidly back to straight angle, whatever it be, then stop and reset the bool
+            //set bool to doing this and not compressing even if you press compress
+            //go rapidly back to straight angle, whatever it be, then stop and reset the bool
             //else if compressing, do fixed compress motorspeed
 
+            JointMotor2D top = hinges[i * 2].motor;
+            top.motorSpeed = topMotorSpeed;
+            hinges[i * 2].motor = top;
+            JointMotor2D bot = hinges[i * 2 + 1].motor;
+            bot.motorSpeed = botMotorSpeed;
+            hinges[i * 2 + 1].motor = bot;
+
             //if firing do that
-                //if i < 2, fire a bullet and set cooldown
+            //if i < 2, fire a bullet and set cooldown
 
         }
 
