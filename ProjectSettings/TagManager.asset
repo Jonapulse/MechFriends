@@ -18,9 +18,9 @@ TagManager:
   - rightLeg
   - leftLeg
   - body
-  - 
-  - 
-  - 
+  - building
+  - enemy
+  - ground
   - 
   - 
   - 
@@ -49,4 +49,7 @@ TagManager:
     locked: 0
   - name: Mech
     uniqueID: 4014868291
+    locked: 0
+  - name: Overlay
+    uniqueID: 2928098483
     locked: 0
