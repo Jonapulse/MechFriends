@@ -71,12 +71,12 @@ public class MechControls : MonoBehaviour {
             //Not sure if that input will work
             if (Input.GetAxisRaw("Fire_P" + (i + 1)) == 1)
             {
-                laserGraphics[i].SetActive(true);
+             //   laserGraphics[i].SetActive(true);
                 limbsToBoost[i].AddForce((new Vector2( limbsToBoost[i].transform.position.x, limbsToBoost[i].transform.position.y) - new Vector2(laserGraphics[i].transform.position.x, laserGraphics[i].transform.position.y)).normalized * BOOST_FORCE);
             }
             else
             {
-                laserGraphics[i].SetActive(false);
+             //   laserGraphics[i].SetActive(false);
             }
             //if fire, show graphic and add force
             //else hide graphic
