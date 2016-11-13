@@ -38,6 +38,12 @@ public class MechTautLooseControl : MonoBehaviour {
     public float BOOST_COOLDOWN = 3f;
     public float BOOST_DURATION = 1.5f;
     public float BOOST_FORCE = 60f;
+    public float TOGGLE_COOLDOWN_TIME = 0.5f;
+    private float toggleTimer = 0;
+
+    //Player toggle graphics
+    public GameObject[] portraitHolders;
+    public GameObject[] playerPortraits;
 
     // Use this for initialization
     void Start () {
@@ -78,9 +84,10 @@ public class MechTautLooseControl : MonoBehaviour {
 
         for(int i = 0; i < 4; i++)
         {
-            Vector2 playerOrientation = new Vector2(Input.GetAxisRaw("Horizontal_P" + (i + 1)), Input.GetAxisRaw("Vertical_P" + (i + 1)));
+            int playerNum = limbControllers[i];
+            if (Manager.Instance.numPlayers == 1 && i != 1) continue;
 
-           // Debug.Log("PlayerOrientation is " + playerOrientation);
+            Vector2 playerOrientation = new Vector2(Input.GetAxisRaw("Horizontal_P" + i), Input.GetAxisRaw("Vertical_P" + i));
 
             float topMotorSpeed = 0;
             float botMotorSpeed = 0;
@@ -113,37 +120,45 @@ public class MechTautLooseControl : MonoBehaviour {
             //go rapidly back to straight angle, whatever it be, then stop and reset the bool
             //else if compressing, do fixed compress motorspeed
 
-            JointMotor2D top = hinges[i * 2].motor;
+            JointMotor2D top = hinges[(playerNum - 1) * 2].motor;
             top.motorSpeed = topMotorSpeed;
-            hinges[i * 2].motor = top;
-            JointMotor2D bot = hinges[i * 2 + 1].motor;
+            hinges[(playerNum - 1) * 2].motor = top;
+            JointMotor2D bot = hinges[(playerNum - 1) * 2 + 1].motor;
             bot.motorSpeed = botMotorSpeed;
-            hinges[i * 2 + 1].motor = bot;
+            hinges[(playerNum - 1) * 2 + 1].motor = bot;
 
             //if firing do that
             //if i < 2, fire a bullet and set cooldown
 
         }
 
-        //if anyone presses switch, toggle
+        //MANAGE COOLDOWN TIMERS
+        toggleTimer -= Time.deltaTime;
+        for (int i = 0; i < limbCooldowns.Length; i++) if (limbCooldowns[i] > 0) limbCooldowns[i] -= Time.deltaTime;
 
-        //if toggle button, change portrait and which appendage
+        //Check for player toggling after all moves recorded
+        for (int i = 0; i < 4; i++) {
+            if (toggleTimer <= 0 && Input.GetAxisRaw("Toggle_P" + limbControllers[i]) == 1)
+            {
+                toggleTimer = TOGGLE_COOLDOWN_TIME;
+                ToggleControl();
+                break;
+            }
+        }
 
-        //based on appendage...
-        //find direction we're pressing and move appendage towards that globally (limited by hinges)
-        //if compress button down, tauten the appendage up to max
-        //if decompress button down, release the appendage all at once
-        //if action button down, do that action (fire on a timer for arms, boost for feet on timed burn)
     }
 
     void ToggleControl()
     {
+       
         int leftOverController = limbControllers[limbControllers.Length - 1];
-        for(int i = 0; i < limbControllers.Length - 1; i++)
+        for(int i = limbControllers.Length - 2; i >= 0; i--)
         {
             limbControllers[i + 1] = limbControllers[i];
         }
         limbControllers[0] = leftOverController;
 
+        //Graphically
+        for (int i = 0; i < 4; i++) playerPortraits[limbControllers[i] - 1].transform.position = portraitHolders[i].gameObject.transform.position;
     }
 }

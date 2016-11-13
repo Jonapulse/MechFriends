@@ -29,6 +29,11 @@ public class Manager : MonoBehaviour {
     public int numPlayers = 1;
     private bool gameFinished = false;
 
+    void Awake()
+    {
+        _instance = this;
+    }
+
     void Start()
     {
         titleScreen.SetActive(true);
